@@ -1,3 +1,4 @@
+/* Button 默认样式 */
 .my-btn {
     line-height: 1.5;
     position: relative;
@@ -20,6 +21,7 @@
     border-color: #d9d9d9;
     background-color: #fff;
     border-radius: 4px;
+    outline: none;
 }
 
 .my-btn:hover {
@@ -41,10 +43,12 @@
     background-color:#E8E9EB;
 }
 
+/* Button 虚线边框设置 */
 .my-btn-dashed {
     border-style: dashed;
 }
 
+/* Primary Button */
 .my-btn-primary {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
@@ -71,6 +75,7 @@
     border-color: #A6D0FF;
 }
 
+/* Success Button */
 .my-btn-success {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
@@ -97,6 +102,7 @@
     border-color: #8AE1AA;
 }
 
+/* Info Button */
 .my-btn-info {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
@@ -123,6 +129,7 @@
     border-color: #A9D9F9;
 }
 
+/* Warning Button */
 .my-btn-warning {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
@@ -149,6 +156,7 @@
     border-color: #FFCF8B;
 }
 
+/* Error Button */
 .my-btn-error {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
@@ -173,6 +181,67 @@
     color: #fff;
     background-color: #FFB7A7;
     border-color: #FFB7A7;
+}
+
+/* Text Button */
+.my-btn-text {
+    box-shadow: none;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.my-btn-text:not(:disabled):hover {
+    background-color: #E8E9EB;
+    border-color: transparent;
+}
+
+.my-btn-text:not(:disabled):active {
+    background-color: #DCDDE0;
+    border-color: transparent;
+}
+
+.my-btn-text:disabled {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/* Link Button */
+.my-btn-link {
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+    background-color: transparent;
+    color: #48f;
+    height: auto;
+}
+
+.my-btn-link:hover {
+    color: #65A2FF;
+    background-color: transparent;
+}
+
+.my-btn-link:active {
+    color: #2A62D2;
+    background-color: transparent;
+}
+
+.my-btn-link-disabled {
+    cursor: not-allowed;
+    color: #A6D0FF;
+}
+
+.my-btn-link-disabled:hover {
+    color: #A6D0FF;
+    background-color: transparent;
+}
+
+.my-btn-link-disabled:active {
+    color: #A6D0FF;
+    background-color: transparent;
+}
+
+.my-btn-link-underline {
+    text-decoration: underline;
 }
 
 /*

@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.box-layout {
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
 /* Custom Button CSS Style */
 .my-btn {
   margin-right: 10px;

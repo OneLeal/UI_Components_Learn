@@ -38,10 +38,10 @@ interface ButtonProps extends MergedHTMLAttributes {
   rootClassName?: string;
   danger?: boolean;
   block?: boolean;
+  underline?: boolean;
   children?: React.ReactNode;
   // [key: `data-${string}`]: string;
   styles?: { icon: React.CSSProperties };
-  href?: string;
 }
 
 // 配置 loading 数据
@@ -61,7 +61,6 @@ function getLoadingConfig(loading: ButtonProps["loading"]): LoadingConfigType {
   };
 }
 
-// TODO: 处理 type = text & type = link
 const MyButton = (props: ButtonProps) => {
   const {
     size,
@@ -70,17 +69,23 @@ const MyButton = (props: ButtonProps) => {
     shape,
     children,
     block,
+    danger,
     href,
+    target,
     styles,
     className,
     disabled,
     loading,
+    underline,
   } = props;
 
   const typeClass = classNames({
     "my-btn": true,
     [`my-btn-${type}`]: !!type,
+    [`my-btn-${type}-disabled`]: disabled && !!type && type === "link",
+    [`my-btn-${type}-underline`]: !!underline && !!type && type === "link",
   });
+
   const loadingOrDelay = useMemo<LoadingConfigType>(
     () => getLoadingConfig(loading),
     [loading]
@@ -124,6 +129,19 @@ const MyButton = (props: ButtonProps) => {
 
     return cleanupTimer;
   }, [loadingOrDelay]);
+
+  if (type === "link") {
+    return (
+      <a
+        className={typeClass}
+        href={href || "#"}
+        target={target || "_self"}
+        onClick={handleClick}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
     <button className={typeClass} disabled={disabled} onClick={handleClick}>

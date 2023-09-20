@@ -15,7 +15,7 @@ root.render(
     {/* <DButton type='primary'>Primary</DButton>
     <DButton className='my-btn'>Default</DButton> */}
 
-    <div style={{ padding: "50px" }}>
+    <div className="box-layout">
       <h3>按钮-常规</h3>
 
       <MyButton type="primary">Primary</MyButton>
@@ -27,7 +27,7 @@ root.render(
       <MyButton>Default</MyButton>
     </div>
 
-    <div style={{ padding: "50px" }}>
+    <div className="box-layout">
       <h3>按钮-禁用</h3>
       <MyButton disabled type="primary">
         Primary
@@ -48,6 +48,27 @@ root.render(
         Dashed
       </MyButton>
       <MyButton disabled>Default</MyButton>
+    </div>
+
+    <div className="box-layout">
+      <h3>文字 & 链接</h3>
+
+      <MyButton type="text">Text</MyButton>
+      <MyButton type="text" disabled>Text Disabled</MyButton>
+
+      <MyButton type="link">Link</MyButton>
+
+      <MyButton type="link" disabled>
+        Link
+      </MyButton>
+
+      <MyButton type="link" href="https://docs.nestjs.com/" target="_black" underline>
+        Link
+      </MyButton>
+
+      <MyButton type="link" disabled underline>
+        Link
+      </MyButton>
     </div>
   </React.StrictMode>
 );
