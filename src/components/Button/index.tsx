@@ -79,6 +79,7 @@ const MyButton = (props: ButtonProps) => {
     underline,
   } = props;
 
+  // 获取样式字符串
   const typeClass = classNames({
     "my-btn": true,
     [`my-btn-${type}`]: !!type,
@@ -89,7 +90,7 @@ const MyButton = (props: ButtonProps) => {
   const loadingOrDelay = useMemo<LoadingConfigType>(
     () => getLoadingConfig(loading),
     [loading]
-  );
+  ); // 获取 loading 配置参数
   const [innerLoading, setLoading] = useState<boolean>(loadingOrDelay.loading); // 组件内部的 loading 状态
 
   // 处理点击事件
@@ -130,6 +131,7 @@ const MyButton = (props: ButtonProps) => {
     return cleanupTimer;
   }, [loadingOrDelay]);
 
+  // 返回 Link or Text
   if (type === "link") {
     return (
       <a
@@ -143,6 +145,7 @@ const MyButton = (props: ButtonProps) => {
     );
   }
 
+  // 返回 Button 
   return (
     <button className={typeClass} disabled={disabled} onClick={handleClick}>
       {children}
