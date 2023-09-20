@@ -2,12 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
 import "./style.css";
 
-type MergedHTMLAttributes = Omit<
-  React.HTMLAttributes<HTMLElement> &
-    React.ButtonHTMLAttributes<HTMLElement> &
-    React.AnchorHTMLAttributes<HTMLElement>,
-  "type"
->;
+const ButtonShapes = ["default", "circle", "round"] as const;
 const ButtonTypes = [
   "default",
   "primary",
@@ -19,12 +14,17 @@ const ButtonTypes = [
   "link",
   "text",
 ] as const;
-const ButtonShapes = ["default", "circle", "round"] as const;
 
 type SizeType = "small" | "middle" | "large" | undefined;
 type ButtonType = (typeof ButtonTypes)[number];
 type ButtonShape = (typeof ButtonShapes)[number];
 type LoadingConfigType = { loading: boolean; delay: number };
+type MergedHTMLAttributes = Omit<
+  React.HTMLAttributes<HTMLElement> &
+    React.ButtonHTMLAttributes<HTMLElement> &
+    React.AnchorHTMLAttributes<HTMLElement>,
+  "type"
+>;
 
 interface ButtonProps extends MergedHTMLAttributes {
   type?: ButtonType;
@@ -36,7 +36,6 @@ interface ButtonProps extends MergedHTMLAttributes {
   prefixCls?: string;
   className?: string;
   rootClassName?: string;
-  ghost?: boolean;
   danger?: boolean;
   block?: boolean;
   children?: React.ReactNode;
@@ -62,6 +61,7 @@ function getLoadingConfig(loading: ButtonProps["loading"]): LoadingConfigType {
   };
 }
 
+// TODO: 处理 type = text & type = link
 const MyButton = (props: ButtonProps) => {
   const {
     size,
@@ -77,11 +77,31 @@ const MyButton = (props: ButtonProps) => {
     loading,
   } = props;
 
+  const typeClass = classNames({
+    "my-btn": true,
+    [`my-btn-${type}`]: !!type,
+  });
   const loadingOrDelay = useMemo<LoadingConfigType>(
     () => getLoadingConfig(loading),
     [loading]
   );
   const [innerLoading, setLoading] = useState<boolean>(loadingOrDelay.loading); // 组件内部的 loading 状态
+
+  // 处理点击事件
+  const handleClick = (
+    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
+  ) => {
+    const { onClick } = props;
+    if (innerLoading || disabled) {
+      e.preventDefault();
+      return;
+    }
+
+    // click 事件在非禁用 & 非加载时才生效
+    (
+      onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>
+    )?.(e);
+  };
 
   // 初始化 or 设置组件内部的 loading 状态
   useEffect(() => {
@@ -105,6 +125,10 @@ const MyButton = (props: ButtonProps) => {
     return cleanupTimer;
   }, [loadingOrDelay]);
 
-  return <button>{children}</button>;
+  return (
+    <button className={typeClass} disabled={disabled} onClick={handleClick}>
+      {children}
+    </button>
+  );
 };
 export default MyButton;
