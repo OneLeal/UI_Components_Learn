@@ -1,6 +1,6 @@
 /* Button 默认样式 */
 .my-btn {
-    line-height: 1.5;
+    /* line-height: 1.5; */
     position: relative;
     display: inline-block;
     font-weight: 400;
@@ -13,14 +13,9 @@
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     user-select: none;
     touch-action: manipulation;
-    height: 32px;
-    padding: 4px 15px;
-    font-size: 14px;
-    border-radius: 2px;
     color: rgba(0, 0, 0, 0.85);
     border-color: #d9d9d9;
     background-color: #fff;
-    border-radius: 4px;
     outline: none;
 }
 
@@ -40,11 +35,41 @@
     cursor: not-allowed;
     color: #949599;
     border-color: #D7D7D9;
-    background-color:#E8E9EB;
+    background-color: #E8E9EB;
+}
+
+/* 按钮尺寸 */
+.my-btn-small {
+    height: 24px;
+    padding: 0 7px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.my-btn-middle {
+    height: 32px;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.my-btn-large {
+    height: 40px;
+    padding: 7px 15px;
+    font-size: 16px;
+    border-radius: 8px;
 }
 
 /* Button 虚线边框设置 */
 .my-btn-dashed {
+    border-style: dashed;
+}
+
+.my-btn-dashed:hover {
+    border-style: dashed;
+}
+
+.my-btn-dashed:active {
     border-style: dashed;
 }
 
@@ -242,6 +267,19 @@
 
 .my-btn-link-underline {
     text-decoration: underline;
+}
+
+/* 其它特性 */
+.my-btn-block {
+    width: 100%;
+}
+
+.my-btn-is-circle {
+    border-radius: 50%;
+}
+
+.my-btn-is-round {
+    border-radius: 27px;
 }
 
 /*

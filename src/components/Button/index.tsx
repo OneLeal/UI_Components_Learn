@@ -41,7 +41,6 @@ interface ButtonProps extends MergedHTMLAttributes {
   underline?: boolean;
   children?: React.ReactNode;
   // [key: `data-${string}`]: string;
-  styles?: { icon: React.CSSProperties };
 }
 
 // 配置 loading 数据
@@ -61,9 +60,10 @@ function getLoadingConfig(loading: ButtonProps["loading"]): LoadingConfigType {
   };
 }
 
+// TODO: Icon & Loading effect
 const MyButton = (props: ButtonProps) => {
   const {
-    size,
+    size = "middle",
     icon,
     type,
     shape,
@@ -72,19 +72,23 @@ const MyButton = (props: ButtonProps) => {
     danger,
     href,
     target,
-    styles,
-    className,
+    className = "",
     disabled,
     loading,
     underline,
+    style,
   } = props;
 
   // 获取样式字符串
   const typeClass = classNames({
     "my-btn": true,
+    "my-btn-block": block,
     [`my-btn-${type}`]: !!type,
     [`my-btn-${type}-disabled`]: disabled && !!type && type === "link",
     [`my-btn-${type}-underline`]: !!underline && !!type && type === "link",
+    [`my-btn-is-${shape}`]: !!shape,
+    [`my-btn-${size}`]: size,
+    [className]: !!className,
   });
 
   const loadingOrDelay = useMemo<LoadingConfigType>(
@@ -135,6 +139,7 @@ const MyButton = (props: ButtonProps) => {
   if (type === "link") {
     return (
       <a
+        style={style}
         className={typeClass}
         href={href || "#"}
         target={target || "_self"}
@@ -145,9 +150,14 @@ const MyButton = (props: ButtonProps) => {
     );
   }
 
-  // 返回 Button 
+  // 返回 Button
   return (
-    <button className={typeClass} disabled={disabled} onClick={handleClick}>
+    <button
+      style={style}
+      className={typeClass}
+      disabled={disabled}
+      onClick={handleClick}
+    >
       {children}
     </button>
   );

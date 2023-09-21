@@ -54,7 +54,9 @@ root.render(
       <h3>文字 & 链接</h3>
 
       <MyButton type="text">Text</MyButton>
-      <MyButton type="text" disabled>Text Disabled</MyButton>
+      <MyButton type="text" disabled>
+        Text Disabled
+      </MyButton>
 
       <MyButton type="link">Link</MyButton>
 
@@ -62,13 +64,111 @@ root.render(
         Link
       </MyButton>
 
-      <MyButton type="link" href="https://docs.nestjs.com/" target="_black" underline>
+      <MyButton
+        type="link"
+        href="https://docs.nestjs.com/"
+        target="_black"
+        underline
+      >
         Link
       </MyButton>
 
       <MyButton type="link" disabled underline>
         Link
       </MyButton>
+    </div>
+
+    <div className="box-layout">
+      <h3>按钮尺寸 & 圆角按钮</h3>
+
+      <MyButton type="primary" shape="round" size="small">
+        Small
+      </MyButton>
+
+      <MyButton shape="round" size="small">
+        Small
+      </MyButton>
+
+      <MyButton type="dashed" shape="round" size="small">
+        Small
+      </MyButton>
+
+      <MyButton type="link" shape="round" size="small">
+        Small
+      </MyButton>
+
+      <MyButton type="text" shape="round" size="small">
+        Small
+      </MyButton>
+
+      <MyButton type="primary" shape="round">
+        Middle
+      </MyButton>
+
+      <MyButton shape="round">Middle</MyButton>
+      <MyButton shape="round" type="dashed">
+        Middle
+      </MyButton>
+      <MyButton type="link" shape="round">
+        Middle
+      </MyButton>
+      <MyButton type="text" shape="round">
+        Middle
+      </MyButton>
+
+      <MyButton type="primary" shape="round" size="large">
+        Large
+      </MyButton>
+
+      <MyButton shape="round" size="large">
+        Large
+      </MyButton>
+
+      <MyButton type="dashed" shape="round" size="large">
+        Large
+      </MyButton>
+
+      <MyButton type="link" shape="round" size="large">
+        Large
+      </MyButton>
+
+      <MyButton type="text" shape="round" size="large">
+        Large
+      </MyButton>
+    </div>
+
+    <div className="box-layout">
+      <h3>Block 按钮</h3>
+
+      <div className="box-row">
+        <MyButton type="primary" shape="round" size="large" block>
+          Block Button Large
+        </MyButton>
+      </div>
+
+      <div className="box-row">
+        <MyButton shape="round" block>
+          Block Button Middle
+        </MyButton>
+      </div>
+
+      <div className="box-row">
+        <MyButton type="dashed" shape="round" size="small" block>
+          Block Button Small
+        </MyButton>
+      </div>
+
+      <div className="box-row">
+        <MyButton type="text" shape="round" size="small" block>
+          Block Button Text Small
+        </MyButton>
+      </div>
+
+      <div className="box-row">
+        <MyButton type="link" shape="round" size="small" underline block>
+          Block Button Link Small
+        </MyButton>
+      </div>
     </div>
   </React.StrictMode>
 );

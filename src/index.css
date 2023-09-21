@@ -17,6 +17,16 @@ code {
   margin-bottom: 50px;
 }
 
+.box-row {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.custom-btn-style {
+  margin-top: 25px;
+  color: #ff2c39;
+}
+
 /* Custom Button CSS Style */
 .my-btn {
   margin-right: 10px;
