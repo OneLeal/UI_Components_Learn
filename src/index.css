@@ -16,3 +16,24 @@ code {
   border-radius: 8px;
   background-color: #f4f4f4;
 }
+
+.icon-content {
+  margin-top: 20px;
+}
+
+.icon-content .dao-icon {
+  margin-right: 20px;
+  font-size: 36px;
+}
+
+.color-csv {
+  color: #ff85c0;
+}
+
+.color-xml {
+  color: #73d13d;
+}
+
+.color-code {
+  color: #003eb3;
+}
