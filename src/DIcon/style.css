@@ -39,3 +39,7 @@
 .dao-icon-code::before {
     content: "\e667";
 }
+
+.dao-icon-edit::before {
+    content: "\e7e1";
+}

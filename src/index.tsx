@@ -14,6 +14,8 @@ root.render(
     {/* <App /> */}
     <DButton type="primary">Primary</DButton>
     <DButton className="my-btn">Default</DButton>
+    <DButton type="primary" icon="dao-icon-edit">编 辑</DButton>
+    <DButton icon="dao-icon-edit"></DButton>
 
     <br />
 
